@@ -1,17 +1,26 @@
 class Play
  
   def playgame
-    get_computer_select
-    get_select
-  end
 
-  def get_computer_select
-    @computer_select = ["R","S","P"].sample
+    get_select
+    get_player_select
+    get_computer_select
+    print_result
   end
 
   def get_select
     puts "Your move? (R/P/S, q to quit)"
+  end
+
+  def get_player_select
     @player_select = gets.chomp.capitalize
+  end
+  
+  def get_computer_select
+    @computer_select = ["R","S","P"].sample
+  end
+
+  def print_result
 
     if @computer_select == @player_select
       puts "The result is a tie!"
