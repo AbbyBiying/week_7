@@ -1,3 +1,5 @@
+require_relative "./2card"
+
 class Game
 
 end

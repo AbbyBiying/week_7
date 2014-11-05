@@ -6,7 +6,7 @@ class Play
   end
 
   def get_computer_select
-    @computer_select = ["R","S","P","q"].sample
+    @computer_select = ["R","S","P"].sample
   end
 
   def get_select
