@@ -14,7 +14,6 @@ class Main
     print_all
     ask
     answer
-    result
   end
   
   private
@@ -43,13 +42,9 @@ class Main
   end
 
   def search(query)
-    hotels.find { |hotel| hotel.name == query }
+    hotel = hotels.find { |hotel| hotel.name == query } || None.new
+    puts hotel.info
   end
-
-  def result
-    
-  end
- 
 end
 
 main = Main.new

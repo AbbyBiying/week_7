@@ -10,16 +10,14 @@ class Hotel
     @singles = clean_number(hotel_hash["Number of Singles"])
     @doubles = clean_number(hotel_hash["Number of Doubles"])
   end 
- 
-  
+
   def clean_number(number)
     number.strip.gsub(/[^\d]+/, "").to_i
   end
 
-  def totaltooms
+  def total_rooms
     singles + doubles
   end
- 
 
   def to_s
     name
@@ -31,7 +29,7 @@ class Hotel
     Singles: #{singles}
     Doubles: #{doubles}
     Location: #{location}
-    Number of rooms: #{total_tooms}
+    Number of rooms: #{total_rooms}
     EOS
   end
 
