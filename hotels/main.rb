@@ -1,16 +1,18 @@
 require "csv"  
 require_relative "none"
 require_relative "hotel"
+require_relative "hotel_data"
 
 class Main
-  attr_reader :hotels
+  attr_reader :data
 
   def initialize 
     @file = 'hotels.csv'
-    get 
+    @data = HotelData.new(get_hotels)
   end 
   
   def go
+    puts ""
     print_all
     ask
     answer
@@ -22,14 +24,14 @@ class Main
     CSV.foreach(@file, headers: true).map(&block)
   end 
 
-  def get
-    @hotels = csv_reader do |row|
+  def get_hotels
+    csv_reader do |row|
       Hotel.new(row)
     end
   end
 
   def print_all
-    puts hotels
+    data.names
   end
 
   def ask
@@ -38,11 +40,7 @@ class Main
  
   def answer
     query = gets.chomp
-    search(query) 
-  end
-
-  def search(query)
-    hotel = hotels.find { |hotel| hotel.name == query } || None.new
+    hotel = data.search(query) 
     puts hotel.info
   end
 end
